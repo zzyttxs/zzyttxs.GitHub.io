@@ -1,0 +1,532 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鸽颂振兴 - 鸽专用新城疫疫苗官方商城</title>
+    <!-- 移除Tailwind CDN，改用内嵌基础样式（本地可运行） -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+
+        body {
+            background-color: #f9fafb;
+            color: #1f2937;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        /* 导航栏样式 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 12px 0;
+        }
+
+        .nav-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e40af;
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+                gap: 32px;
+            }
+
+                .nav-links a {
+                    color: #1f2937;
+                    text-decoration: none;
+                    font-weight: 500;
+                }
+
+                    .nav-links a:hover {
+                        color: #2563eb;
+                    }
+        }
+
+        .btn-buy {
+            background-color: #2563eb;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            .btn-buy:hover {
+                background-color: #1d4ed8;
+            }
+        /* 头部轮播区 */
+        header {
+            background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+            color: white;
+            padding: 80px 0 40px;
+            margin-top: 60px;
+        }
+
+        .header-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .header-wrap {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .header-text {
+                width: 50%;
+            }
+
+            .header-img {
+                width: 45%;
+            }
+        }
+
+        .header-text h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+
+        .header-text p {
+            font-size: 16px;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: #1e40af;
+            padding: 12px 24px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-secondary {
+            border: 2px solid white;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .header-img img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        /* 产品区样式 */
+        .product-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+            .section-title h2 {
+                font-size: 28px;
+                font-weight: bold;
+                margin-bottom: 12px;
+            }
+
+            .section-title p {
+                color: #6b7280;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .product-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .product-card {
+            background-color: #f9fafb;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+            .product-card:hover {
+                transform: scale(1.05);
+            }
+
+            .product-card img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-bottom: 16px;
+            }
+
+            .product-card h3 {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 8px;
+            }
+
+            .product-card p {
+                color: #6b7280;
+                margin-bottom: 16px;
+            }
+
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .price {
+            color: #2563eb;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .tag {
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 4px 8px;
+            border-radius: 999px;
+            font-size: 12px;
+        }
+
+        .add-cart {
+            display: block;
+            width: 100%;
+            background-color: #2563eb;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+            .add-cart:hover {
+                background-color: #1d4ed8;
+            }
+        /* 购买表单样式 */
+        .buy-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        .buy-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f9fafb;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .form-row {
+                flex-direction: row;
+            }
+
+            .form-col {
+                flex: 1;
+            }
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+            .form-input:focus, .form-select:focus {
+                outline: none;
+                border-color: #2563eb;
+                box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+            }
+
+        .submit-btn {
+            width: 100%;
+            background-color: #2563eb;
+            color: white;
+            padding: 12px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+            .submit-btn:hover {
+                background-color: #1d4ed8;
+            }
+        /* 页脚样式 */
+        footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 48px 0 24px;
+        }
+
+        .footer-wrap {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-wrap {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .footer-col h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #d1d5db;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+            .footer-col a:hover {
+                color: white;
+            }
+
+        .copyright {
+            text-align: center;
+            padding-top: 24px;
+            margin-top: 24px;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container nav-wrap">
+            <a href="#" class="logo">
+                <span>🐦</span>
+                <span>鸽颂振兴</span>
+            </a>
+            <div class="nav-links">
+                <a href="#product">核心产品</a>
+                <a href="#advantage">产品优势</a>
+                <a href="#service">技术服务</a>
+                <a href="#contact">联系我们</a>
+            </div>
+            <a href="#buy" class="btn-buy">立即购买</a>
+        </div>
+    </nav>
+
+    <!-- 头部轮播区 -->
+    <header>
+        <div class="container header-wrap">
+            <div class="header-text">
+                <h1>鸽专用新城疫疫苗<br><span style="color: #fde047;">免疫保护率≥95%</span></h1>
+                <p>解决养鸽业"无专用疫苗、免疫效果差、成本高"三大痛点，为肉鸽、赛鸽、种鸽提供专业免疫保障</p>
+                <div class="btn-group">
+                    <a href="#buy" class="btn-primary">立即采购</a>
+                    <a href="#consult" class="btn-secondary">在线咨询</a>
+                </div>
+            </div>
+            <div class="header-img">
+                <img src="images/666.jpg" alt="鸽专用新城疫疫苗产品图">
+            </div>
+        </div>
+    </header>
+
+    <!-- 核心产品 -->
+    <section id="product" class="product-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>核心产品</h2>
+                <p>专为鸽群研发的新城疫疫苗，兼顾安全性、有效性与经济性</p>
+            </div>
+            <div class="product-list">
+                <!-- 产品1：肉鸽专用 -->
+                <div class="product-card">
+                    <img src="images/ROUGE.jpg" alt="肉鸽专用新城疫疫苗">
+                    <h3>肉鸽专用疫苗</h3>
+                    <p>针对规模化肉鸽养殖场设计，免疫周期长，降低养殖成本</p>
+                    <div class="product-price">
+                        <span class="price">¥198/盒（50剂）</span>
+                        <span class="tag">热销</span>
+                    </div>
+                    <a href="#buy" class="add-cart">加入购物车</a>
+                </div>
+                <!-- 产品2：赛鸽专用 -->
+                <div class="product-card">
+                    <img src="images/SAIGE.jpg" alt="赛鸽专用新城疫疫苗">
+                    <h3>赛鸽专用疫苗</h3>
+                    <p>零副作用，免疫保护期长达6个月，保障赛鸽竞技状态</p>
+                    <div class="product-price">
+                        <span class="price">¥298/盒（30剂）</span>
+                        <span class="tag">定制款</span>
+                    </div>
+                    <a href="#buy" class="add-cart">加入购物车</a>
+                </div>
+                <!-- 产品3：种鸽专用 -->
+                <div class="product-card">
+                    <img src="images/ZHONGGE.jpg" alt="种鸽专用新城疫疫苗">
+                    <h3>种鸽专用疫苗</h3>
+                    <p>降低垂直传播风险，保障种鸽种群健康与繁育能力</p>
+                    <div class="product-price">
+                        <span class="price">¥358/盒（20剂）</span>
+                        <span class="tag">高端款</span>
+                    </div>
+                    <a href="#buy" class="add-cart">加入购物车</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 购买入口 -->
+    <section id="buy" class="buy-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>立即购买</h2>
+                <p>72小时内发货，正品保障，支持先咨询后下单</p>
+            </div>
+            <div class="buy-form">
+                <form>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label class="form-label" for="product-type">产品类型</label>
+                            <select id="product-type" class="form-select">
+                                <option value="">请选择产品</option>
+                                <option value="meat-pigeon">肉鸽专用疫苗（¥198/盒）</option>
+                                <option value="racing-pigeon">赛鸽专用疫苗（¥298/盒）</option>
+                                <option value="breeding-pigeon">种鸽专用疫苗（¥358/盒）</option>
+                            </select>
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="quantity">购买数量</label>
+                            <input type="number" id="quantity" min="1" value="1" class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label class="form-label" for="contact">联系人</label>
+                            <input type="text" id="contact" placeholder="请输入您的姓名" class="form-input">
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="phone">联系电话</label>
+                            <input type="tel" id="phone" placeholder="请输入您的手机号" class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label class="form-label" for="region">所在地区</label>
+                            <input type="text" id="region" placeholder="请输入省/市/县" class="form-input">
+                        </div>
+                        <div class="form-col">
+                            <label class="form-label" for="address">详细地址</label>
+                            <input type="text" id="address" placeholder="请输入详细收货地址" class="form-input">
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">提交订单</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-wrap">
+                <div class="footer-col">
+                    <h3>鸽颂振兴</h3>
+                    <p>鸽专用新城疫疫苗研发与销售，为养鸽业提供专业免疫保障</p>
+                </div>
+                <div class="footer-col">
+                    <h3>快速链接</h3>
+                    <p><a href="#product">核心产品</a></p>
+                    <p><a href="#buy">立即购买</a></p>
+                    <p><a href="#consult">在线咨询</a></p>
+                </div>
+                <div class="footer-col">
+                    <h3>联系我们</h3>
+                    <p>📞 400-123-4567</p>
+                    <p>📧 contact@gesongzhenxing.com</p>
+                    <p>📍 扬州大学兽医学院</p>
+                </div>
+                <div class="footer-col">
+                    <h3>微信公众号</h3>
+                    <img src="https://picsum.photos/id/1005/120/120" alt="微信公众号二维码" style="width: 120px; height: 120px; border-radius: 8px;">
+                    <p style="margin-top: 8px; font-size: 14px;">扫码关注，获取更多防疫知识</p>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 鸽颂振兴 版权所有
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
