@@ -1,531 +1,291 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>鸽颂振兴 - 鸽专用新城疫疫苗官方商城</title>
-    <!-- 移除Tailwind CDN，改用内嵌基础样式（本地可运行） -->
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Microsoft Yahei", sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五人战队 · 游戏复盘</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238B5CF6'/%3E%3Cstop offset='1' stop-color='%2322D3EE'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M16 2 L27 8 V24 L16 30 L5 24 V8 Z' fill='url(%23g)'/%3E%3Ccircle cx='16' cy='16' r='5' fill='none' stroke='%23070B16' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='1.6' fill='%23070B16'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Chakra+Petch:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#070B16;--bg2:#0B1120;--bg3:#0F1830;
+  --line:#1C2745;--line2:#2C3B63;
+  --txt:#E9EFFF;--txt2:#9AA6C8;--txt3:#66739A;
+  --purple:#8B5CF6;--cyan:#22D3EE;--magenta:#F43F8E;--green:#34D399;--yellow:#FFC857;
+  --grad:linear-gradient(135deg,var(--purple),var(--cyan));
+  --sans:'Noto Sans SC','Microsoft YaHei',system-ui,sans-serif;
+  --disp:'Chakra Petch','Noto Sans SC','Microsoft YaHei',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.7;min-height:100vh;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background-image:linear-gradient(rgba(126,155,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(126,155,255,.05) 1px,transparent 1px);background-size:46px 46px}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(700px 400px at 12% -5%,rgba(139,92,246,.14),transparent 60%),radial-gradient(800px 420px at 95% 8%,rgba(34,211,238,.10),transparent 60%);pointer-events:none}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
 
-        body {
-            background-color: #f9fafb;
-            color: #1f2937;
-        }
+/* ===== 顶部：五人图标导航 ===== */
+.topbar{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 22px;background:rgba(7,11,22,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,var(--purple),var(--cyan),transparent);opacity:.55}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt)}
+.brand-mark{display:grid;place-items:center}
+.brand-mark svg{width:30px;height:30px}
+.brand-name{font-family:var(--disp);font-weight:700;font-size:17px;letter-spacing:.5px;line-height:1.1}
+.brand-name em{display:block;font-style:normal;font-family:var(--disp);font-size:9px;letter-spacing:3px;color:var(--txt3)}
+.crew{display:flex;gap:12px;align-items:flex-start}
+.chip{display:grid;place-items:center;background:none;border:none;cursor:pointer;padding:2px 4px}
+.chip .avatar{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.chip:hover .avatar{transform:translateY(-2px);box-shadow:0 0 18px color-mix(in srgb,var(--accent,#8B5CF6) 55%,transparent)}
+.chip.active .avatar{border-color:var(--accent,#8B5CF6);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent,#8B5CF6) 25%,transparent),0 0 24px color-mix(in srgb,var(--accent,#8B5CF6) 65%,transparent)}
+.avatar{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-family:var(--disp);font-weight:700;font-size:20px;color:var(--accent,#8B5CF6);background:color-mix(in srgb,var(--accent,#8B5CF6) 16%,var(--bg3));border:1.5px solid color-mix(in srgb,var(--accent,#8B5CF6) 65%,transparent)}
+.avatar.im{background-size:cover;background-position:center;background-repeat:no-repeat}
+.ic1{background-image:url('assets/icon-1.png')}
+.ic2{background-image:url('assets/icon-2.png')}
+.ic3{background-image:url('assets/icon-3.png')}
+.ic4{background-image:url('assets/icon-4.png')}
+.ic5{background-image:url('assets/icon-5.png')}
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 16px;
-        }
-        /* 导航栏样式 */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(255,255,255,0.95);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            z-index: 999;
-            padding: 12px 0;
-        }
+/* ===== Hero ===== */
+.hero{position:relative;text-align:center;padding:66px 20px 56px}
+.hero-kicker{font-family:var(--disp);letter-spacing:6px;font-size:12px;color:var(--cyan);margin-bottom:12px}
+.hero h1{font-family:var(--disp);font-weight:700;font-size:clamp(34px,6vw,56px);line-height:1.18;letter-spacing:1px}
+.hero h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{margin-top:16px;color:var(--txt2);font-size:15px}
+.hero-hint{margin-top:26px;font-family:var(--disp);font-size:12px;letter-spacing:2px;color:var(--txt3);display:flex;align-items:center;justify-content:center;gap:8px}
+.hero-hint svg{width:14px;height:14px}
 
-        .nav-wrap {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* ===== 人物区块 ===== */
+.person{scroll-margin-top:80px;padding:46px 24px;border-top:1px solid var(--line);background:linear-gradient(180deg,color-mix(in srgb,var(--accent,#8B5CF6) 5%,transparent),transparent 170px)}
+.person-head{display:flex;align-items:center;gap:22px;max-width:1180px;margin:0 auto}
+.avatar.lg{width:74px;height:74px;font-size:32px;flex:none;border-width:2px}
+.p-info{flex:1;min-width:0}
+.p-role{display:inline-block;font-size:12px;color:var(--txt);background:color-mix(in srgb,var(--accent,#8B5CF6) 18%,transparent);border:1px solid color-mix(in srgb,var(--accent,#8B5CF6) 45%,transparent);padding:2px 10px}
+.p-intro{margin-top:10px;color:var(--txt2);font-size:14px;max-width:64ch}
+.p-stats{display:flex;gap:12px;flex:none}
+.p-stats li{list-style:none;background:var(--bg3);border:1px solid var(--line);padding:8px 14px;min-width:88px;text-align:center}
+.p-stats b{display:block;font-family:var(--disp);font-size:14px;color:var(--accent,#8B5CF6);white-space:nowrap}
+.p-stats span{font-size:11px;color:var(--txt3)}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 20px;
-            font-weight: bold;
-            color: #1e40af;
-        }
+/* ===== 视频卡 ===== */
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;max-width:1180px;margin:30px auto 0}
+.vids.single{grid-template-columns:1fr;max-width:560px}
+.vid{background:var(--bg3);border:1px solid var(--line);display:flex;flex-direction:column;transition:border-color .18s ease,transform .18s ease}
+.vid:hover{border-color:var(--line2);transform:translateY(-3px)}
+.vid-stage{position:relative;aspect-ratio:16/9;background:var(--bg2);overflow:hidden}
+.vid-stage::before,.vid-stage::after{content:"";position:absolute;width:14px;height:14px;z-index:2;pointer-events:none}
+.vid-stage::before{top:6px;left:6px;border-top:2px solid var(--accent,#8B5CF6);border-left:2px solid var(--accent,#8B5CF6)}
+.vid-stage::after{bottom:6px;right:6px;border-bottom:2px solid var(--accent,#8B5CF6);border-right:2px solid var(--accent,#8B5CF6)}
+.vid-stage video{width:100%;height:100%;display:block;object-fit:cover}
+.vid-ph{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(135deg,color-mix(in srgb,var(--accent,#8B5CF6) 12%,var(--bg2)),var(--bg2) 62%);cursor:pointer}
+.playbtn{width:64px;height:64px;border-radius:50%;border:2px solid var(--accent,#8B5CF6);background:color-mix(in srgb,var(--accent,#8B5CF6) 22%,transparent);color:#fff;display:grid;place-items:center;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+.playbtn:hover{transform:scale(1.08);box-shadow:0 0 22px color-mix(in srgb,var(--accent,#8B5CF6) 70%,transparent)}
+.ph-tip{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:11px;color:var(--txt3)}
+.badge{position:absolute;top:10px;right:10px;z-index:2;font-family:var(--disp);font-size:11px;letter-spacing:1px;padding:2px 10px;background:linear-gradient(135deg,var(--purple),var(--magenta));color:#fff}
+.vid-body{padding:14px 16px 16px;border-top:1px solid var(--line)}
+.vid-body h4{font-size:16px;font-weight:700;color:var(--txt)}
+.vid-body p{margin-top:6px;font-size:13px;color:var(--txt2);line-height:1.65}
 
-        .nav-links {
-            display: none;
-        }
+/* ===== 页脚 / Toast ===== */
+footer{text-align:center;padding:34px 20px 48px;color:var(--txt3);font-size:12px;border-top:1px solid var(--line)}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,80px);z-index:90;background:#101A33;border:1px solid var(--cyan);color:var(--txt);padding:10px 18px;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,.5);opacity:0;transition:opacity .25s ease,transform .25s ease;max-width:88vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
 
-        @media (min-width: 768px) {
-            .nav-links {
-                display: flex;
-                gap: 32px;
-            }
-
-                .nav-links a {
-                    color: #1f2937;
-                    text-decoration: none;
-                    font-weight: 500;
-                }
-
-                    .nav-links a:hover {
-                        color: #2563eb;
-                    }
-        }
-
-        .btn-buy {
-            background-color: #2563eb;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 999px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-            .btn-buy:hover {
-                background-color: #1d4ed8;
-            }
-        /* 头部轮播区 */
-        header {
-            background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
-            color: white;
-            padding: 80px 0 40px;
-            margin-top: 60px;
-        }
-
-        .header-wrap {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        @media (min-width: 768px) {
-            .header-wrap {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
-
-            .header-text {
-                width: 50%;
-            }
-
-            .header-img {
-                width: 45%;
-            }
-        }
-
-        .header-text h1 {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 16px;
-        }
-
-        .header-text p {
-            font-size: 16px;
-            margin-bottom: 24px;
-            opacity: 0.9;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background-color: white;
-            color: #1e40af;
-            padding: 12px 24px;
-            border-radius: 999px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .btn-secondary {
-            border: 2px solid white;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 999px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .header-img img {
-            width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        }
-        /* 产品区样式 */
-        .product-section {
-            padding: 60px 0;
-            background-color: white;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-            .section-title h2 {
-                font-size: 28px;
-                font-weight: bold;
-                margin-bottom: 12px;
-            }
-
-            .section-title p {
-                color: #6b7280;
-                max-width: 600px;
-                margin: 0 auto;
-            }
-
-        .product-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-
-        @media (min-width: 768px) {
-            .product-list {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .product-card {
-            background-color: #f9fafb;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-            .product-card:hover {
-                transform: scale(1.05);
-            }
-
-            .product-card img {
-                width: 100%;
-                height: 200px;
-                object-fit: cover;
-                border-radius: 8px;
-                margin-bottom: 16px;
-            }
-
-            .product-card h3 {
-                font-size: 18px;
-                font-weight: bold;
-                margin-bottom: 8px;
-            }
-
-            .product-card p {
-                color: #6b7280;
-                margin-bottom: 16px;
-            }
-
-        .product-price {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .price {
-            color: #2563eb;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .tag {
-            background-color: #dcfce7;
-            color: #166534;
-            padding: 4px 8px;
-            border-radius: 999px;
-            font-size: 12px;
-        }
-
-        .add-cart {
-            display: block;
-            width: 100%;
-            background-color: #2563eb;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            border-radius: 8px;
-            text-decoration: none;
-        }
-
-            .add-cart:hover {
-                background-color: #1d4ed8;
-            }
-        /* 购买表单样式 */
-        .buy-section {
-            padding: 60px 0;
-            background-color: white;
-        }
-
-        .buy-form {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #f9fafb;
-            padding: 32px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .form-row {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        @media (min-width: 768px) {
-            .form-row {
-                flex-direction: row;
-            }
-
-            .form-col {
-                flex: 1;
-            }
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-input, .form-select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-            .form-input:focus, .form-select:focus {
-                outline: none;
-                border-color: #2563eb;
-                box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
-            }
-
-        .submit-btn {
-            width: 100%;
-            background-color: #2563eb;
-            color: white;
-            padding: 12px 0;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-            .submit-btn:hover {
-                background-color: #1d4ed8;
-            }
-        /* 页脚样式 */
-        footer {
-            background-color: #1f2937;
-            color: white;
-            padding: 48px 0 24px;
-        }
-
-        .footer-wrap {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-        }
-
-        @media (min-width: 768px) {
-            .footer-wrap {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .footer-col h3 {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 16px;
-        }
-
-        .footer-col p, .footer-col a {
-            color: #d1d5db;
-            text-decoration: none;
-            line-height: 1.8;
-        }
-
-            .footer-col a:hover {
-                color: white;
-            }
-
-        .copyright {
-            text-align: center;
-            padding-top: 24px;
-            margin-top: 24px;
-            border-top: 1px solid #374151;
-            color: #9ca3af;
-            font-size: 14px;
-        }
-    </style>
+/* ===== 响应式 ===== */
+@media (max-width:960px){
+  .vids{grid-template-columns:1fr}
+  .person-head{flex-wrap:wrap}
+  .p-stats{width:100%;justify-content:flex-start}
+}
+@media (max-width:560px){
+  .crew{gap:6px}
+  .chip{padding:2px 4px}
+  .chip .avatar{width:42px;height:42px;font-size:18px}
+  .topbar{padding:10px 14px}
+  .brand-name{font-size:15px}
+  .person{padding:36px 14px}
+  .hero{padding:44px 14px 40px}
+  .avatar.lg{width:60px;height:60px;font-size:26px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .chip .avatar,.playbtn,.vid{transition:none}
+}
+</style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <nav>
-        <div class="container nav-wrap">
-            <a href="#" class="logo">
-                <span>🐦</span>
-                <span>鸽颂振兴</span>
-            </a>
-            <div class="nav-links">
-                <a href="#product">核心产品</a>
-                <a href="#advantage">产品优势</a>
-                <a href="#service">技术服务</a>
-                <a href="#contact">联系我们</a>
-            </div>
-            <a href="#buy" class="btn-buy">立即购买</a>
-        </div>
-    </nav>
 
-    <!-- 头部轮播区 -->
-    <header>
-        <div class="container header-wrap">
-            <div class="header-text">
-                <h1>鸽专用新城疫疫苗<br><span style="color: #fde047;">免疫保护率≥95%</span></h1>
-                <p>解决养鸽业"无专用疫苗、免疫效果差、成本高"三大痛点，为肉鸽、赛鸽、种鸽提供专业免疫保障</p>
-                <div class="btn-group">
-                    <a href="#buy" class="btn-primary">立即采购</a>
-                    <a href="#consult" class="btn-secondary">在线咨询</a>
-                </div>
-            </div>
-            <div class="header-img">
-                <img src="666.jpg" alt="鸽专用新城疫疫苗产品图">
-            </div>
-        </div>
-    </header>
+<!-- ===== 顶部：站点名 + 五人图标导航 ===== -->
+<header class="topbar">
+  <a class="brand" href="#top" aria-label="回到顶部">
+    <span class="brand-mark">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B5CF6"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs><path d="M16 2 L27 8 V24 L16 30 L5 24 V8 Z" fill="url(#bm)"/><circle cx="16" cy="16" r="5" fill="none" stroke="#070B16" stroke-width="2.5"/><circle cx="16" cy="16" r="1.6" fill="#070B16"/></svg>
+    </span>
+    <span class="brand-name">五人电竞屋<em>GAMER SQUAD</em></span>
+  </a>
+  <nav class="crew" id="crew" aria-label="成员跳转"></nav>
+</header>
 
-    <!-- 核心产品 -->
-    <section id="product" class="product-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>核心产品</h2>
-                <p>专为鸽群研发的新城疫疫苗，兼顾安全性、有效性与经济性</p>
-            </div>
-            <div class="product-list">
-                <!-- 产品1：肉鸽专用 -->
-                <div class="product-card">
-                    <img src="ROUGE.jpg" alt="肉鸽专用新城疫疫苗">
-                    <h3>肉鸽专用疫苗</h3>
-                    <p>针对规模化肉鸽养殖场设计，免疫周期长，降低养殖成本</p>
-                    <div class="product-price">
-                        <span class="price">¥198/盒（50剂）</span>
-                        <span class="tag">热销</span>
-                    </div>
-                    <a href="#buy" class="add-cart">加入购物车</a>
-                </div>
-                <!-- 产品2：赛鸽专用 -->
-                <div class="product-card">
-                    <img src="SAIGE.jpg" alt="赛鸽专用新城疫疫苗">
-                    <h3>赛鸽专用疫苗</h3>
-                    <p>零副作用，免疫保护期长达6个月，保障赛鸽竞技状态</p>
-                    <div class="product-price">
-                        <span class="price">¥298/盒（30剂）</span>
-                        <span class="tag">定制款</span>
-                    </div>
-                    <a href="#buy" class="add-cart">加入购物车</a>
-                </div>
-                <!-- 产品3：种鸽专用 -->
-                <div class="product-card">
-                    <img src="ZHONGGE.JPG" alt="种鸽专用新城疫疫苗">
-                    <h3>种鸽专用疫苗</h3>
-                    <p>降低垂直传播风险，保障种鸽种群健康与繁育能力</p>
-                    <div class="product-price">
-                        <span class="price">¥358/盒（20剂）</span>
-                        <span class="tag">高端款</span>
-                    </div>
-                    <a href="#buy" class="add-cart">加入购物车</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<main id="top">
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <p class="hero-kicker">SQUAD REVIEW</p>
+    <h1>五人战队<span class="grad">游戏复盘</span></h1>
+    <p class="hero-sub">点击顶部图标，跳转到对应成员的游戏复盘视频</p>
+    <p class="hero-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      向下滚动查看各成员复盘
+    </p>
+  </section>
 
-    <!-- 购买入口 -->
-    <section id="buy" class="buy-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>立即购买</h2>
-                <p>72小时内发货，正品保障，支持先咨询后下单</p>
-            </div>
-            <div class="buy-form">
-                <form>
-                    <div class="form-row">
-                        <div class="form-col">
-                            <label class="form-label" for="product-type">产品类型</label>
-                            <select id="product-type" class="form-select">
-                                <option value="">请选择产品</option>
-                                <option value="meat-pigeon">肉鸽专用疫苗（¥198/盒）</option>
-                                <option value="racing-pigeon">赛鸽专用疫苗（¥298/盒）</option>
-                                <option value="breeding-pigeon">种鸽专用疫苗（¥358/盒）</option>
-                            </select>
-                        </div>
-                        <div class="form-col">
-                            <label class="form-label" for="quantity">购买数量</label>
-                            <input type="number" id="quantity" min="1" value="1" class="form-input">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-col">
-                            <label class="form-label" for="contact">联系人</label>
-                            <input type="text" id="contact" placeholder="请输入您的姓名" class="form-input">
-                        </div>
-                        <div class="form-col">
-                            <label class="form-label" for="phone">联系电话</label>
-                            <input type="tel" id="phone" placeholder="请输入您的手机号" class="form-input">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-col">
-                            <label class="form-label" for="region">所在地区</label>
-                            <input type="text" id="region" placeholder="请输入省/市/县" class="form-input">
-                        </div>
-                        <div class="form-col">
-                            <label class="form-label" for="address">详细地址</label>
-                            <input type="text" id="address" placeholder="请输入详细收货地址" class="form-input">
-                        </div>
-                    </div>
-                    <button type="submit" class="submit-btn">提交订单</button>
-                </form>
-            </div>
-        </div>
-    </section>
+  <!-- ===== 成员区块（由下方数据渲染） ===== -->
+  <div id="sections"></div>
 
-    <!-- 页脚 -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-wrap">
-                <div class="footer-col">
-                    <h3>鸽颂振兴</h3>
-                    <p>鸽专用新城疫疫苗研发与销售，为养鸽业提供专业免疫保障</p>
-                </div>
-                <div class="footer-col">
-                    <h3>快速链接</h3>
-                    <p><a href="#product">核心产品</a></p>
-                    <p><a href="#buy">立即购买</a></p>
-                    <p><a href="#consult">在线咨询</a></p>
-                </div>
-                <div class="footer-col">
-                    <h3>联系我们</h3>
-                    <p>📞 400-123-4567</p>
-                    <p>📧 contact@gesongzhenxing.com</p>
-                    <p>📍 扬州大学兽医学院</p>
-                </div>
-                <div class="footer-col">
-                    <h3>微信公众号</h3>
-                    <p style="margin-top: 8px; font-size: 14px;">扫码关注，获取更多防疫知识</p>
-                </div>
-            </div>
-            <div class="copyright">
-                © 2025 鸽颂振兴 版权所有
-            </div>
-        </div>
-    </footer>
+  <footer>当前为示例站点：图标、视频与文案均为占位内容，可随时替换。</footer>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============================================================
+ * 成员数据：改这里即可替换成真实内容
+ *   role   : 定位 / 位置
+ *   accent : 该成员的主题色（图标光效、角标、边框颜色）
+ *   intro  : 简介文字
+ *   stats  : 三个小标签 [标签, 值]
+ *   videos : 该成员的游戏复盘视频，每段 { t:标题, tag:分类标签, d:配文, src:视频地址 }
+ *     · 视频文件放在本文件同级的 videos/ 文件夹里，src 写相对路径，如 'videos/ctt1.mp4'
+ *     · 顶部图标 = assets/icon-1..5.png，顺序对应 PEOPLE 数组顺序
+ *     · src 留空则显示"视频占位"（点击有提示）；填 mp4 直链 / 本地路径后自动渲染为可播放视频
+ *     · 如果是 B站 / 抖音等平台网页链接，发给我，我帮你改成内嵌播放
+ * ============================================================ */
+const PEOPLE = [
+  {
+    role:'突击手 · FPS', accent:'#8B5CF6',
+    intro:'主打 FPS 突击位，专打突破与残局。枪法快、反应狠，总在队伍最需要的时候冲在最前面。',
+    stats:[['擅长','FPS 突破'],['风格','快攻残局流'],['定位','突破口']],
+    videos:[
+      {t:'复盘 01', tag:'复盘', d:'听到声音，打提前枪很有意识', src:'videos/ctt1.mp4'},
+      {t:'复盘 02', tag:'复盘', d:'瞄到了没停住，准星乱飘，可能灵敏度不太适应', src:'videos/ctt2.mp4'},
+      {t:'复盘 03', tag:'复盘', d:'没看地图，幽影勾引了半天，没发现人在下面。', src:'videos/ctt3.mp4'},
+      {t:'复盘 04', tag:'复盘', d:'开枪太早了，但是跟枪还不错。', src:'videos/ctt4.mp4'},
+      {t:'复盘 05', tag:'复盘', d:'太勇敢了，拿着箭和对面打', src:'videos/ctt5.mp4'},
+      {t:'复盘 06', tag:'复盘', d:'对面动静很大来找，应该在下面等着不往前走，架着就好了。', src:'videos/ctt6.mp4'},
+      {t:'复盘 07', tag:'复盘', d:'一开始反应慢了，后面人多了不要恋战，要拆开来打。', src:'videos/ctt7.mp4'}
+    ]
+  },
+  {
+    role:'自由人 · 身法位', accent:'#22D3EE',
+    intro:'自由人位，靠身法打信息差。绕后、拉枪线、打侧翼，永远出现在对手没想到的位置。',
+    stats:[['擅长','身法拉扯'],['风格','游走偷背流'],['定位','信息位']],
+    videos:[
+      {t:'复盘 01', tag:'复盘', d:'这几枪很不错，就是开枪的时候最好不要乱动，还好第一枪就把火男秒了', src:'videos/zzx1.mp4'},
+      {t:'复盘 02', tag:'复盘', d:'这种距离扫射也可以，摆射没有瞄头节奏又慢了一点，击杀效率不够高，差点杀了', src:'videos/zzx2.mp4'},
+      {t:'复盘 03', tag:'复盘', d:'摆设走的范围太小了，像在原地，有时候没停住，差点杀掉。', src:'videos/zzx3.mp4'},
+      {t:'复盘 04', tag:'复盘', d:'可能是卡了，看到人要往头上瞄，不要慌', src:'videos/zzx4.mp4'}
+    ]
+  },
+  {
+    role:'团队核心 · 开团位', accent:'#F43F8E',
+    intro:'团队核心位，正面抗压开团。稳、硬、靠得住，是全队的盾，也是开团的号角。',
+    stats:[['擅长','正面开团'],['风格','硬刚抗压流'],['定位','团队盾']],
+    videos:[
+      {t:'复盘 01', tag:'复盘', d:'跟枪不错，村长的特长扫射转移。', src:'videos/cz1.mp4'},
+      {t:'复盘 02', tag:'复盘', d:'准星再往左一点离墙，近一点就好了，预瞄需要练习。', src:'videos/cz2.mp4'},
+      {t:'复盘 03', tag:'复盘', d:'对面火男刚杀完人也在右边，这波信息拿的不够到位，要多看看小地图。', src:'videos/cz3.mp4'},
+      {t:'复盘 04', tag:'复盘', d:'进点最好打闪，开大也要打闪，', src:'videos/cz4.mp4'},
+      {t:'复盘 05', tag:'复盘', d:'茂卫开枪太快了，弹道乱了，但是运气好杀了一绝。', src:'videos/cz5.mp4'},
+      {t:'复盘 06', tag:'复盘', d:'幽影在那跳，其实是看到敌人了在勾引，村长居然直接无视了，打的时候站着不动有一点呆。', src:'videos/cz6.mp4'}
+    ]
+  },
+  {
+    role:'狙击手 · 架枪位', accent:'#FFC857',
+    intro:'狙击位，冷静、耐心、一枪定音。负责架枪、控视野和关键击杀，弹无虚发。',
+    stats:[['擅长','远点狙杀'],['风格','耐心猎手流'],['定位','关键先生']],
+    videos:[
+      {t:'复盘 01', tag:'复盘', d:'打奶妈没有乱扫，两枪两枪打的，留了时间瞄准，不错。', src:'videos/hbw1.mp4'},
+      {t:'复盘 02', tag:'复盘', d:'预瞄有点问题，后面一绝跳下来应该听到了，大拉秒他就好了。', src:'videos/hbw2.mp4'},
+      {t:'复盘 03', tag:'复盘', d:'摆设就好了，就不会弹道这么乱。', src:'videos/hbw3.mp4'},
+      {t:'复盘 04', tag:'复盘', d:'可以到家里找机会断他或者到包点一起打，不用正面硬刚。', src:'videos/hbw4.mp4'}
+    ]
+  },
+  {
+    role:'指挥位 · 战术大脑', accent:'#34D399',
+    intro:'指挥位，全队大脑。负责战术布置、节奏把控和局势判断，冷静到最后一秒。',
+    stats:[['擅长','战术调度'],['风格','冷静博弈流'],['定位','指挥中枢']],
+    videos:[
+      {t:'复盘 01', tag:'复盘', d:'刚开始没打到，利用移动的时间来瞄准，值得学习。', src:'videos/xh1.mp4'}
+    ]
+  }
+];
+
+const PLAY_SVG = '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>';
+
+/* 渲染顶部图标导航 */
+const crew = document.getElementById('crew');
+PEOPLE.forEach((p, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'chip';
+  btn.setAttribute('aria-label', '跳转到第 ' + (i + 1) + ' 位成员的复盘');
+  btn.style.setProperty('--accent', p.accent);
+  btn.innerHTML = '<span class="avatar im ic' + (i + 1) + '"></span>';
+  btn.addEventListener('click', () => {
+    document.getElementById('sec-' + i).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  crew.appendChild(btn);
+});
+
+/* 渲染成员区块与视频卡 */
+const holder = document.getElementById('sections');
+holder.innerHTML = PEOPLE.map((p, i) => {
+  const stats = p.stats.map(s => '<li><b>' + s[1] + '</b><span>' + s[0] + '</span></li>').join('');
+  const vids = p.videos.map(v => {
+    const stage = v.src
+      ? '<video controls preload="metadata" src="' + v.src + '"></video>'
+      : '<div class="vid-ph"><button class="playbtn" aria-label="播放（占位）">' + PLAY_SVG + '</button><span class="ph-tip">视频占位 · 点击了解替换方法</span></div>';
+    const badge = v.tag ? '<span class="badge">' + v.tag + '</span>' : '';
+    return '<article class="vid"><div class="vid-stage">' + stage + badge + '</div>' +
+           '<div class="vid-body"><h4>' + v.t + '</h4><p>' + v.d + '</p></div></article>';
+  }).join('');
+  return '<section class="person" id="sec-' + i + '" data-i="' + i + '" style="--accent:' + p.accent + '">' +
+    '<div class="person-head">' +
+      '<div class="avatar lg im ic' + (i + 1) + '"></div>' +
+      '<div class="p-info">' +
+        '<span class="p-role">' + p.role + '</span>' +
+        '<p class="p-intro">' + p.intro + '</p>' +
+      '</div>' +
+      '<ul class="p-stats">' + stats + '</ul>' +
+    '</div>' +
+    '<div class="vids' + (p.videos.length === 1 ? ' single' : '') + '">' + vids + '</div>' +
+  '</section>';
+}).join('');
+
+/* 点击占位视频 → 提示 */
+holder.addEventListener('click', (e) => {
+  const btn = e.target.closest('.playbtn');
+  if (btn) showToast('这里是视频占位：把视频链接（B站 / 抖音等）或本地视频发给我，即可替换成真实视频。');
+});
+
+/* Toast */
+let toastTimer = null;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3600);
+}
+
+/* 滚动高亮当前成员 */
+const chips = Array.from(crew.children);
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(en => {
+    if (en.isIntersecting) setActive(en.target.dataset.i);
+  });
+}, { rootMargin: '-35% 0px -55% 0px' });
+document.querySelectorAll('.person').forEach(s => io.observe(s));
+
+function setActive(i) {
+  chips.forEach((c, idx) => c.classList.toggle('active', String(idx) === i));
+}
+</script>
 </body>
 </html>
