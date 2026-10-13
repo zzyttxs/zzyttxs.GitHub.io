@@ -38,11 +38,11 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradi
 .chip.active .avatar{border-color:var(--accent,#8B5CF6);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent,#8B5CF6) 25%,transparent),0 0 24px color-mix(in srgb,var(--accent,#8B5CF6) 65%,transparent)}
 .avatar{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-family:var(--disp);font-weight:700;font-size:20px;color:var(--accent,#8B5CF6);background:color-mix(in srgb,var(--accent,#8B5CF6) 16%,var(--bg3));border:1.5px solid color-mix(in srgb,var(--accent,#8B5CF6) 65%,transparent)}
 .avatar.im{background-size:cover;background-position:center;background-repeat:no-repeat}
-.ic1{background-image:url('assets/icon-1.png')}
-.ic2{background-image:url('assets/icon-2.png')}
-.ic3{background-image:url('assets/icon-3.png')}
-.ic4{background-image:url('assets/icon-4.png')}
-.ic5{background-image:url('assets/icon-5.png')}
+.ic1{background-image:url('icon-1.png')}
+.ic2{background-image:url('icon-2.png')}
+.ic3{background-image:url('icon-3.png')}
+.ic4{background-image:url('icon-4.png')}
+.ic5{background-image:url('icon-5.png')}
 
 /* ===== Hero ===== */
 .hero{position:relative;text-align:center;padding:66px 20px 56px}
@@ -163,13 +163,13 @@ const PEOPLE = [
     intro:'主打 FPS 突击位，专打突破与残局。枪法快、反应狠，总在队伍最需要的时候冲在最前面。',
     stats:[['擅长','FPS 突破'],['风格','快攻残局流'],['定位','突破口']],
     videos:[
-      {t:'复盘 01', tag:'复盘', d:'听到声音，打提前枪很有意识', src:'videos/ctt1.mp4'},
-      {t:'复盘 02', tag:'复盘', d:'瞄到了没停住，准星乱飘，可能灵敏度不太适应', src:'videos/ctt2.mp4'},
-      {t:'复盘 03', tag:'复盘', d:'没看地图，幽影勾引了半天，没发现人在下面。', src:'videos/ctt3.mp4'},
-      {t:'复盘 04', tag:'复盘', d:'开枪太早了，但是跟枪还不错。', src:'videos/ctt4.mp4'},
-      {t:'复盘 05', tag:'复盘', d:'太勇敢了，拿着箭和对面打', src:'videos/ctt5.mp4'},
-      {t:'复盘 06', tag:'复盘', d:'对面动静很大来找，应该在下面等着不往前走，架着就好了。', src:'videos/ctt6.mp4'},
-      {t:'复盘 07', tag:'复盘', d:'一开始反应慢了，后面人多了不要恋战，要拆开来打。', src:'videos/ctt7.mp4'}
+      {t:'复盘 01', tag:'复盘', d:'听到声音，打提前枪很有意识', src:'ctt1.mp4'},
+      {t:'复盘 02', tag:'复盘', d:'瞄到了没停住，准星乱飘，可能灵敏度不太适应', src:'ctt2.mp4'},
+      {t:'复盘 03', tag:'复盘', d:'没看地图，幽影勾引了半天，没发现人在下面。', src:'ctt3.mp4'},
+      {t:'复盘 04', tag:'复盘', d:'开枪太早了，但是跟枪还不错。', src:'ctt4.mp4'},
+      {t:'复盘 05', tag:'复盘', d:'太勇敢了，拿着箭和对面打', src:'ctt5.mp4'},
+      {t:'复盘 06', tag:'复盘', d:'对面动静很大来找，应该在下面等着不往前走，架着就好了。', src:'ctt6.mp4'},
+      {t:'复盘 07', tag:'复盘', d:'一开始反应慢了，后面人多了不要恋战，要拆开来打。', src:'ctt7.mp4'}
     ]
   },
   {
@@ -177,10 +177,10 @@ const PEOPLE = [
     intro:'自由人位，靠身法打信息差。绕后、拉枪线、打侧翼，永远出现在对手没想到的位置。',
     stats:[['擅长','身法拉扯'],['风格','游走偷背流'],['定位','信息位']],
     videos:[
-      {t:'复盘 01', tag:'复盘', d:'这几枪很不错，就是开枪的时候最好不要乱动，还好第一枪就把火男秒了', src:'videos/zzx1.mp4'},
-      {t:'复盘 02', tag:'复盘', d:'这种距离扫射也可以，摆射没有瞄头节奏又慢了一点，击杀效率不够高，差点杀了', src:'videos/zzx2.mp4'},
-      {t:'复盘 03', tag:'复盘', d:'摆设走的范围太小了，像在原地，有时候没停住，差点杀掉。', src:'videos/zzx3.mp4'},
-      {t:'复盘 04', tag:'复盘', d:'可能是卡了，看到人要往头上瞄，不要慌', src:'videos/zzx4.mp4'}
+      {t:'复盘 01', tag:'复盘', d:'这几枪很不错，就是开枪的时候最好不要乱动，还好第一枪就把火男秒了', src:'zzx1.mp4'},
+      {t:'复盘 02', tag:'复盘', d:'这种距离扫射也可以，摆射没有瞄头节奏又慢了一点，击杀效率不够高，差点杀了', src:'zzx2.mp4'},
+      {t:'复盘 03', tag:'复盘', d:'摆设走的范围太小了，像在原地，有时候没停住，差点杀掉。', src:'zzx3.mp4'},
+      {t:'复盘 04', tag:'复盘', d:'可能是卡了，看到人要往头上瞄，不要慌', src:'zzx4.mp4'}
     ]
   },
   {
@@ -188,12 +188,12 @@ const PEOPLE = [
     intro:'团队核心位，正面抗压开团。稳、硬、靠得住，是全队的盾，也是开团的号角。',
     stats:[['擅长','正面开团'],['风格','硬刚抗压流'],['定位','团队盾']],
     videos:[
-      {t:'复盘 01', tag:'复盘', d:'跟枪不错，村长的特长扫射转移。', src:'videos/cz1.mp4'},
-      {t:'复盘 02', tag:'复盘', d:'准星再往左一点离墙，近一点就好了，预瞄需要练习。', src:'videos/cz2.mp4'},
-      {t:'复盘 03', tag:'复盘', d:'对面火男刚杀完人也在右边，这波信息拿的不够到位，要多看看小地图。', src:'videos/cz3.mp4'},
-      {t:'复盘 04', tag:'复盘', d:'进点最好打闪，开大也要打闪，', src:'videos/cz4.mp4'},
-      {t:'复盘 05', tag:'复盘', d:'茂卫开枪太快了，弹道乱了，但是运气好杀了一绝。', src:'videos/cz5.mp4'},
-      {t:'复盘 06', tag:'复盘', d:'幽影在那跳，其实是看到敌人了在勾引，村长居然直接无视了，打的时候站着不动有一点呆。', src:'videos/cz6.mp4'}
+      {t:'复盘 01', tag:'复盘', d:'跟枪不错，村长的特长扫射转移。', src:'cz1.mp4'},
+      {t:'复盘 02', tag:'复盘', d:'准星再往左一点离墙，近一点就好了，预瞄需要练习。', src:'cz2.mp4'},
+      {t:'复盘 03', tag:'复盘', d:'对面火男刚杀完人也在右边，这波信息拿的不够到位，要多看看小地图。', src:'cz3.mp4'},
+      {t:'复盘 04', tag:'复盘', d:'进点最好打闪，开大也要打闪，', src:'/cz4.mp4'},
+      {t:'复盘 05', tag:'复盘', d:'茂卫开枪太快了，弹道乱了，但是运气好杀了一绝。', src:'cz5.mp4'},
+      {t:'复盘 06', tag:'复盘', d:'幽影在那跳，其实是看到敌人了在勾引，村长居然直接无视了，打的时候站着不动有一点呆。', src:'cz6.mp4'}
     ]
   },
   {
@@ -201,10 +201,10 @@ const PEOPLE = [
     intro:'狙击位，冷静、耐心、一枪定音。负责架枪、控视野和关键击杀，弹无虚发。',
     stats:[['擅长','远点狙杀'],['风格','耐心猎手流'],['定位','关键先生']],
     videos:[
-      {t:'复盘 01', tag:'复盘', d:'打奶妈没有乱扫，两枪两枪打的，留了时间瞄准，不错。', src:'videos/hbw1.mp4'},
-      {t:'复盘 02', tag:'复盘', d:'预瞄有点问题，后面一绝跳下来应该听到了，大拉秒他就好了。', src:'videos/hbw2.mp4'},
-      {t:'复盘 03', tag:'复盘', d:'摆设就好了，就不会弹道这么乱。', src:'videos/hbw3.mp4'},
-      {t:'复盘 04', tag:'复盘', d:'可以到家里找机会断他或者到包点一起打，不用正面硬刚。', src:'videos/hbw4.mp4'}
+      {t:'复盘 01', tag:'复盘', d:'打奶妈没有乱扫，两枪两枪打的，留了时间瞄准，不错。', src:'hbw1.mp4'},
+      {t:'复盘 02', tag:'复盘', d:'预瞄有点问题，后面一绝跳下来应该听到了，大拉秒他就好了。', src:'hbw2.mp4'},
+      {t:'复盘 03', tag:'复盘', d:'摆设就好了，就不会弹道这么乱。', src:'hbw3.mp4'},
+      {t:'复盘 04', tag:'复盘', d:'可以到家里找机会断他或者到包点一起打，不用正面硬刚。', src:'hbw4.mp4'}
     ]
   },
   {
@@ -212,7 +212,7 @@ const PEOPLE = [
     intro:'指挥位，全队大脑。负责战术布置、节奏把控和局势判断，冷静到最后一秒。',
     stats:[['擅长','战术调度'],['风格','冷静博弈流'],['定位','指挥中枢']],
     videos:[
-      {t:'复盘 01', tag:'复盘', d:'刚开始没打到，利用移动的时间来瞄准，值得学习。', src:'videos/xh1.mp4'}
+      {t:'复盘 01', tag:'复盘', d:'刚开始没打到，利用移动的时间来瞄准，值得学习。', src:'xh1.mp4'}
     ]
   }
 ];
