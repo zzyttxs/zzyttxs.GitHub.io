@@ -22,7 +22,6 @@ body{background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1
 body::before{content:"";position:fixed;inset:0;z-index:-2;background-image:linear-gradient(rgba(126,155,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(126,155,255,.05) 1px,transparent 1px);background-size:46px 46px}
 body::after{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(700px 400px at 12% -5%,rgba(139,92,246,.14),transparent 60%),radial-gradient(800px 420px at 95% 8%,rgba(34,211,238,.10),transparent 60%);pointer-events:none}
 :focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
-
 /* ===== 顶部：五人图标导航 ===== */
 .topbar{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 22px;background:rgba(7,11,22,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .topbar::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,var(--purple),var(--cyan),transparent);opacity:.55}
@@ -43,7 +42,6 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradi
 .ic3{background-image:url('icon-3.png')}
 .ic4{background-image:url('icon-4.png')}
 .ic5{background-image:url('icon-5.png')}
-
 /* ===== Hero ===== */
 .hero{position:relative;text-align:center;padding:66px 20px 56px}
 .hero-kicker{font-family:var(--disp);letter-spacing:6px;font-size:12px;color:var(--cyan);margin-bottom:12px}
@@ -52,7 +50,6 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradi
 .hero-sub{margin-top:16px;color:var(--txt2);font-size:15px}
 .hero-hint{margin-top:26px;font-family:var(--disp);font-size:12px;letter-spacing:2px;color:var(--txt3);display:flex;align-items:center;justify-content:center;gap:8px}
 .hero-hint svg{width:14px;height:14px}
-
 /* ===== 人物区块 ===== */
 .person{scroll-margin-top:80px;padding:46px 24px;border-top:1px solid var(--line);background:linear-gradient(180deg,color-mix(in srgb,var(--accent,#8B5CF6) 5%,transparent),transparent 170px)}
 .person-head{display:flex;align-items:center;gap:22px;max-width:1180px;margin:0 auto}
@@ -64,7 +61,6 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradi
 .p-stats li{list-style:none;background:var(--bg3);border:1px solid var(--line);padding:8px 14px;min-width:88px;text-align:center}
 .p-stats b{display:block;font-family:var(--disp);font-size:14px;color:var(--accent,#8B5CF6);white-space:nowrap}
 .p-stats span{font-size:11px;color:var(--txt3)}
-
 /* ===== 视频卡 ===== */
 .vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;max-width:1180px;margin:30px auto 0}
 .vids.single{grid-template-columns:1fr;max-width:560px}
@@ -83,12 +79,10 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradi
 .vid-body{padding:14px 16px 16px;border-top:1px solid var(--line)}
 .vid-body h4{font-size:16px;font-weight:700;color:var(--txt)}
 .vid-body p{margin-top:6px;font-size:13px;color:var(--txt2);line-height:1.65}
-
 /* ===== 页脚 / Toast ===== */
 footer{text-align:center;padding:34px 20px 48px;color:var(--txt3);font-size:12px;border-top:1px solid var(--line)}
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,80px);z-index:90;background:#101A33;border:1px solid var(--cyan);color:var(--txt);padding:10px 18px;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,.5);opacity:0;transition:opacity .25s ease,transform .25s ease;max-width:88vw;text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-
 /* ===== 响应式 ===== */
 @media (max-width:960px){
   .vids{grid-template-columns:1fr}
@@ -112,7 +106,6 @@ footer{text-align:center;padding:34px 20px 48px;color:var(--txt3);font-size:12px
 </style>
 </head>
 <body>
-
 <!-- ===== 顶部：站点名 + 五人图标导航 ===== -->
 <header class="topbar">
   <a class="brand" href="#top" aria-label="回到顶部">
@@ -123,7 +116,6 @@ footer{text-align:center;padding:34px 20px 48px;color:var(--txt3);font-size:12px
   </a>
   <nav class="crew" id="crew" aria-label="成员跳转"></nav>
 </header>
-
 <main id="top">
   <!-- ===== Hero ===== -->
   <section class="hero">
@@ -135,15 +127,11 @@ footer{text-align:center;padding:34px 20px 48px;color:var(--txt3);font-size:12px
       向下滚动查看各成员复盘
     </p>
   </section>
-
   <!-- ===== 成员区块（由下方数据渲染） ===== -->
   <div id="sections"></div>
-
   <footer>五人电竞屋 · 战队游戏复盘</footer>
 </main>
-
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
 <script>
 /* ============================================================
  * 成员数据：改这里即可替换成真实内容
@@ -225,14 +213,11 @@ const PEOPLE = [
     stats:[['擅长','战术调度'],['风格','冷静博弈流'],['定位','指挥中枢']],
     videos:[
       {t:'复盘 01', tag:'复盘', d:'刚开始没打到，利用移动的时间来瞄准，值得学习。', src:'xh1.mp4'},
-       {t:'残局可惜了', tag:'复盘', d:'最后开大应该好一点，墙正好碎了没来得及。', src:'zzy10.mp4'},
-      
+      {t:'残局可惜了', tag:'复盘', d:'最后开大应该好一点，墙正好碎了没来得及。', src:'zzy10.mp4'}
     ]
   }
 ];
-
 const PLAY_SVG = '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>';
-
 /* 渲染顶部图标导航 */
 const crew = document.getElementById('crew');
 PEOPLE.forEach((p, i) => {
@@ -246,7 +231,6 @@ PEOPLE.forEach((p, i) => {
   });
   crew.appendChild(btn);
 });
-
 /* 渲染成员区块与视频卡 */
 const holder = document.getElementById('sections');
 holder.innerHTML = PEOPLE.map((p, i) => {
@@ -271,13 +255,11 @@ holder.innerHTML = PEOPLE.map((p, i) => {
     '<div class="vids' + (p.videos.length === 1 ? ' single' : '') + '">' + vids + '</div>' +
   '</section>';
 }).join('');
-
 /* 点击占位视频 → 提示 */
 holder.addEventListener('click', (e) => {
   const btn = e.target.closest('.playbtn');
   if (btn) showToast('这里是视频占位：把视频链接（B站 / 抖音等）或本地视频发给我，即可替换成真实视频。');
 });
-
 /* Toast */
 let toastTimer = null;
 function showToast(msg) {
@@ -287,7 +269,6 @@ function showToast(msg) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove('show'), 3600);
 }
-
 /* 滚动高亮当前成员 */
 const chips = Array.from(crew.children);
 const io = new IntersectionObserver((entries) => {
@@ -296,7 +277,6 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { rootMargin: '-35% 0px -55% 0px' });
 document.querySelectorAll('.person').forEach(s => io.observe(s));
-
 function setActive(i) {
   chips.forEach((c, idx) => c.classList.toggle('active', String(idx) === i));
 }
